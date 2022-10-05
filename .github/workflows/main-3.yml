@@ -24,6 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -36,8 +38,6 @@ jobs:
           echo test, and deploy your project.
       
       - uses: nrwl/nx-set-shas@v3
-        with:
-          fetch-depth: 0
       - run: npm ci
       
       - run: npx nx workspace-lint
